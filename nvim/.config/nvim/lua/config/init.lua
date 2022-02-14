@@ -1,0 +1,7 @@
+require('config.treesitter')
+require('config.telescope')
+require('config.lsp')
+require('config.cmp')
+require('config.which')
+require('config.feline')
+require('config.gitsigns')
