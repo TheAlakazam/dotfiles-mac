@@ -48,3 +48,6 @@ map('n', '<leader>ec', '<cmd>lclose<CR>', {silent = true})
 -- Diagnostics Mappings
 map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', {silent = true})
 map('n', '[d', '<cmd>lua vim.diagnostic.goto_next()<CR>', {silent = true})
+
+-- Nvim Tree
+map('n', '<leader>a', '<cmd>NvimTreeToggle<CR>', {silent = true})
