@@ -4,6 +4,7 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+map('n', '<leader><leader>', '<cmd>nohl<CR>', {silent = true})
 -- Telescope Mappings
 map('n', '<leader>ff', '<cmd>Telescope find_files<CR>', {silent = true})
 map('n', '<leader>fb', '<cmd>Telescope buffers<CR>')
@@ -22,15 +23,17 @@ map('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
     {silent = true})
 map('n', '<leader>lR', '<cmd>lua vim.lsp.buf.rename()<CR>', {silent = true})
 map('n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>', {silent = true})
-map('n', '<leader>lc', '<cmd>lua vim.lsp.buf.show_line_diagnostics()<CR>',
-    {silent = true})
+map('n', '<leader>lc', '<cmd>Lspsaga show_line_diagnostics<CR>',{silent = true})
 map('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>', {silent = true})
 
 -- Window Mappings
-map('n', '<C-j>', '<C-W>j')
-map('n', '<C-h>', '<C-W>h')
-map('n', '<C-l>', '<C-W>l')
-map('n', '<C-k>', '<C-W>k')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-l>', '<C-w>l')
+map('n', '<C-k>', '<C-w>k')
+
+-- Terminal Mappings
+map('t', '<esc>', '<C-\\><C-n>')
 
 -- Quickfix Mappings
 map('n', ']c', '<cmd>cnext<CR>', {silent = true})
@@ -51,3 +54,6 @@ map('n', '[d', '<cmd>lua vim.diagnostic.goto_next()<CR>', {silent = true})
 
 -- Nvim Tree
 map('n', '<leader>a', '<cmd>NvimTreeToggle<CR>', {silent = true})
+
+-- Neogit
+map('n', '<leader>pg', '<cmd>Neogit<CR>', {silent = true})
