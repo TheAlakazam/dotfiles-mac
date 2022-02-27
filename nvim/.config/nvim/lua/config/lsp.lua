@@ -42,3 +42,6 @@ lspconfig.efm.setup {
     settings = {languages = languageFormats},
     filetypes = {'lua'}
 }
+
+
+lspconfig.tsserver.setup {capabilities = capabilities}
