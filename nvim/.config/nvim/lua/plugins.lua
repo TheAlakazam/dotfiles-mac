@@ -1,6 +1,30 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
+local conf = {
+    profile = {enable = true, threshold = 0},
+    display = {
+        open_fn = function()
+            return require('packer.util').float {border = "rounded"}
+        end
+    }
+}
+-- Check if packer.nvim is installed
+-- Run PackerCompile if there are changes in this file
+local function packer_init()
+    local fn = vim.fn
+    local install_path = fn.stdpath "data" ..
+                             "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        packer_bootstrap = fn.system {
+            "git", "clone", "--depth", "1",
+            "https://github.com/wbthomason/packer.nvim", install_path
+        }
+        vim.cmd [[packadd packer.nvim]]
+    end
+    vim.cmd "autocmd BufWritePost plugins.lua source <afile> | PackerCompile"
+end
+
+local function plugins(use)
     use 'wbthomason/packer.nvim'
 
     -- Treesitter
@@ -38,6 +62,15 @@ return require('packer').startup(function(use)
         requires = {'nvim-lua/plenary.nvim'}
         -- tag = 'release' -- To use the latest release
     }
+
+    -- Markdown
+    use {
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+        ft = "markdown",
+        cmd = {"MarkdownPreview"}
+    }
+
     -- Utility
     use 'tpope/vim-surround'
     use 'folke/which-key.nvim'
@@ -48,4 +81,36 @@ return require('packer').startup(function(use)
         },
         config = function() require'nvim-tree'.setup {} end
     }
-end)
+    use {
+        "numToStr/Comment.nvim",
+        opt = true,
+        keys = {"gc", "gcc", "gbc"},
+        config = function() require("Comment").setup {} end
+    }
+    -- IndentLine
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        event = "BufReadPre",
+        config = function() require("indent_blankline").setup {} end
+    }
+
+    -- Autopairs
+    use {"windwp/nvim-autopairs", wants = "nvim-treesitter"}
+    -- Autotag
+    use {
+        "windwp/nvim-ts-autotag",
+        event = "InsertEnter",
+        config = function()
+            require('nvim-ts-autotag').setup {enable = true}
+        end
+    }
+    use {"akinsho/toggleterm.nvim"}
+    use {"tami5/lspsaga.nvim", branch = "nvim6.0"}
+    use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
+    use {'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim'}
+end
+
+packer_init()
+local packer = require('packer')
+packer.init(conf)
+packer.startup(plugins)
