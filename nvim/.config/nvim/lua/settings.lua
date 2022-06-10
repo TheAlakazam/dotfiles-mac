@@ -15,7 +15,7 @@ opt.hidden = true
 opt.relativenumber = true
 opt.number = true
 opt.termguicolors = true
-opt.guifont = "MesloLGS NF:h12"
+opt.guifont = "Hack Nerd Font Mono:h12"
 
 g.mapleader = " "
 

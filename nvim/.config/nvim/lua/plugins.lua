@@ -36,7 +36,7 @@ local function plugins(use)
     -- Telescope
     use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim'}}
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
-
+    use {'nvim-telescope/telescope-ui-select.nvim'}
     -- Nvim-CMP
     use 'hrsh7th/nvim-cmp'
     use {'hrsh7th/cmp-nvim-lsp', requires = {'hrs7th/nvim-cmp'}}
@@ -108,6 +108,9 @@ local function plugins(use)
     use {"tami5/lspsaga.nvim", branch = "nvim6.0"}
     use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
     use {'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim'}
+
+    -- Rust
+    use {"simrat39/rust-tools.nvim", requires = 'nvim-lua/plenary.nvim'}
 end
 
 packer_init()

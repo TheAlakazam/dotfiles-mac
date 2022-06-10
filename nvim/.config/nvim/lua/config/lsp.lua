@@ -33,6 +33,8 @@ lspconfig.sumneko_lua.setup {
 
 lspconfig.rust_analyzer.setup {capabilities = capabilities}
 
+lspconfig.clangd.setup {capabilities = capabilities}
+
 local languageFormats = {
     lua = {{formatCommand = 'lua-format -i', formatStdin = true}}
 }
