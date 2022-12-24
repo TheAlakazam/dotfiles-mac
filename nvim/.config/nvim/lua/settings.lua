@@ -16,6 +16,8 @@ opt.relativenumber = true
 opt.number = true
 opt.termguicolors = true
 opt.guifont = "Hack Nerd Font Mono:h12"
+opt.splitbelow = true
+opt.splitright = true
 
 g.mapleader = " "
 

@@ -35,15 +35,12 @@ lspconfig.rust_analyzer.setup {capabilities = capabilities}
 
 lspconfig.clangd.setup {capabilities = capabilities}
 
-local languageFormats = {
-    lua = {{formatCommand = 'lua-format -i', formatStdin = true}}
-}
-
-lspconfig.efm.setup {
-    init_options = {documentFormatting = true},
-    settings = {languages = languageFormats},
-    filetypes = {'lua'}
-}
-
-
 lspconfig.tsserver.setup {capabilities = capabilities}
+
+lspconfig.texlab.setup {capabilities = capabilities}
+
+lspconfig.clangd.setup {capabilities = capabilities}
+
+lspconfig.tailwindcss.setup {capabilities = capabilities}
+
+lspconfig.astro.setup {capabilities = capabilities}

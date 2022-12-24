@@ -32,6 +32,11 @@ local function plugins(use)
 
     -- LSP Stuff
     use 'neovim/nvim-lspconfig'
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = {'nvim-lua/plenary.nvim'}
+    }
+    use 'MunifTanjim/prettier.nvim'
 
     -- Telescope
     use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim'}}
@@ -50,6 +55,7 @@ local function plugins(use)
         'hrsh7th/cmp-vsnip',
         requires = {'hrsh7th/vim-vsnip', 'hrsh7th/nvim-cmp'}
     }
+    use 'rafamadriz/friendly-snippets'
 
     -- Theming
     use 'folke/tokyonight.nvim'
@@ -111,6 +117,9 @@ local function plugins(use)
 
     -- Rust
     use {"simrat39/rust-tools.nvim", requires = 'nvim-lua/plenary.nvim'}
+
+    -- Latex
+    use "lervag/vimtex"
 end
 
 packer_init()
