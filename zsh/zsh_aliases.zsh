@@ -1,5 +1,5 @@
 # ls
-alias ls="exa --icons"
+alias ls="eza --icons"
 alias la="ls -al"
 alias reload="source ~/.zshrc"
 
